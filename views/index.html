@@ -1,0 +1,89 @@
+@{layout('')}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Website Bootcamp</title>
+  </head>
+  <body>
+    <h1>Todo List:</h1>
+    <div id="data"></div>
+    <div style="margin-top: 30px">
+      <button onclick="addData()">Add</button>
+      <button onclick="editData()">Edit Line 1</button>
+      <button onclick="deleteData()">Delete Line 1</button>
+    </div>
+  </body>
+  <script>
+    // console.log("ini global object", window);
+    const todo = [];
+    let text = "";
+    let num = 1;
+
+    //create todo
+    const addData = () => {
+      let dataBaru = {
+        nama: "Membuat Server " + num++,
+        status: "done",
+        tanggal: new Date(),
+      };
+      todo.push(dataBaru);
+      for (var i = 0; i < todo.length; i++) {
+        text =
+          "<li>Nama: " +
+          todo[i].nama +
+          " | Status: " +
+          todo[i].status +
+          " | Tanggal: " +
+          todo[i].tanggal.toDateString() +
+          "</li>";
+      }
+      document.getElementById("data").innerHTML += text;
+    };
+
+    function viewData() {
+      for (var i = 0; i < todo.length; i++) {
+        text =
+          "<li>Nama: " +
+          todo[i].nama +
+          " | Status: " +
+          todo[i].status +
+          " | Tanggal: " +
+          todo[i].tanggal.toDateString() +
+          "</li>";
+        document.getElementById("data").innerHTML += text;
+      }
+    }
+
+    function clear() {
+      document.getElementById("data").innerHTML = "";
+    }
+
+    //edit todo
+    const editData = () => {
+      todo[0].status = "on progress";
+      clear();
+      viewData();
+    };
+
+    //delete todo
+    const deleteData = () => {
+      todo.splice(0, 1);
+      clear();
+      viewData();
+    };
+
+    // var dataSaya = {
+    //   name: "Vero",
+    //   perkenalkan: function () {
+    //     console.log("Nama Saya adalah", this.name);
+    //   },
+    // };
+    // dataSaya.perkenalkan();
+  </script>
+</html>
