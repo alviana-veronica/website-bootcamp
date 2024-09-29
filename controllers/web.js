@@ -4,5 +4,5 @@ exports.install = function () {
 
 function home() {
   var self = this;
-  self.view("index");
+  self.view("home");
 }
