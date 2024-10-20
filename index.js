@@ -1,7 +1,4 @@
-// const { ROUTE } = require("@snipkode/server");
-
 require("@snipkode/server");
-//console.log("ini global object", global);
 
 ROUTE("GET /", function () {
   this.view("pages/landingpage");
@@ -15,4 +12,16 @@ ROUTE("GET /dashboard", function () {
   this.view("pages/dashboard");
 });
 
-HTTP("debug", { port: 80 });
+ROUTE("GET /buku", function () {
+  this.view("pages/books");
+});
+
+ROUTE("GET /penerbit", function () {
+  this.view("pages/publisher");
+});
+
+ROUTE("GET /pengguna", function () {
+  this.view("pages/users");
+});
+
+HTTP("debug", { port: 8000 });
